@@ -1,0 +1,7 @@
+
+import numpy as np
+from sklearn import datasets
+df = pd.read_csv('detail.csv')
+df['time'] = pd.to_datetime(df['time'])
+df = df.resample('10s', on='time').first()
+df.to_csv(path_or_buf="detailDownsampled.csv",index=False)
